@@ -12,6 +12,7 @@
 **/.classpath
 **/.eclipse
 **/target/
+**/.jfrog
 target/
 bin/
 .svn
