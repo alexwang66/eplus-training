@@ -12,6 +12,9 @@
     "test": "vue-cli-service test:unit && vue-cli-service test:e2e",
     "build": "vue-cli-service build"
   },
+  "publishConfig": {
+    "registry": "http://demo.jfrogchina.com/artifactory/api/npm/alex-npm/"
+  },
   "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
