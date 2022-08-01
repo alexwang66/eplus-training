@@ -1,0 +1,10 @@
+version: 1
+type: maven
+resolver:
+  serverId: jfrogchina
+  snapshotRepo: alex-maven
+  releaseRepo: alex-maven
+deployer:
+  serverId: jfrogchina
+  snapshotRepo: alex-maven
+  releaseRepo: alex-maven
