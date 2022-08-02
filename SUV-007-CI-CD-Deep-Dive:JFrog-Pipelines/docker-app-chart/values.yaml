@@ -6,8 +6,8 @@ replicaCount: 1
 restartPolicy: Never
 
 image:
-  repository: docker.artifactory/docker-app
-  tag: 1.1.1
+  repository: demo.jfrogchina.com:80/docker-local/docker-app
+  tag: latest
   secretName: regsecret
   pullPolicy: Always
 
