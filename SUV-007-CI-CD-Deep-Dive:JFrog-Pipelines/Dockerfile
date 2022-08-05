@@ -1,6 +1,5 @@
 #Download image from artifactory
-ARG REGISTRY=docker.artifactory
-ARG art_server=https://demo.jfrogchina.com
+ARG REGISTRY=http://demo.jfrogchina.com/artifactory
 FROM openjdk:11-jdk
 # FROM $REGISTRY/openjdk:11-jdk
 

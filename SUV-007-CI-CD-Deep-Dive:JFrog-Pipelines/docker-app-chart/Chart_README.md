@@ -2,9 +2,9 @@
 
 ### Configure docker registry credentials in K8S to pull docker image from Artifactory docker registry
 
-## Create a Secret named regsecret:
+## Create a Secret named regcred:
 ```
-kubectl create secret docker-registry regsecret --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
+kubectl create secret docker-registry regcred --docker-server=<your-registry-server> --docker-username=<your-name> --docker-password=<your-pword> --docker-email=<your-email>
 ```
 ##### where:
 ```
@@ -18,7 +18,7 @@ kubectl create secret docker-registry regsecret --docker-server=<your-registry-s
 
 To understand what’s in the Secret you just created, start by viewing the Secret in YAML format:
 ```
-kubectl get secret regsecret --output=yaml
+kubectl get secret regcred --output=yaml
 ```
 
 ## Installing the Chart
@@ -52,7 +52,7 @@ The following tables lists the configurable parameters of the docker-app chart a
 | `image.repository`                 | docker-app image                    | `$ART_DOCKER_REPO/docker-app:{tag}`                     |
 | `image.pullPolicy`                 | Image pull policy                   | `Always`                                                  |
 | `image.tag`                        | Tag of docker image                 | `latest`                                                  |
-| `image.secretName`                 | Credentials of Art docker repo      | `regsecret`                                               |
+| `image.secretName`                 | Credentials of Art docker repo      | `regcred`                                               |
 | `service.type`                     | Kubernetes Service type             | `LoadBalancer`                                            |
 | `service.port`                     | Port to expose                      | `8181`                                                    |
 | `imageCredentials.registry`        | Artifactory docker registry         | `docker.artifactory`                                      |

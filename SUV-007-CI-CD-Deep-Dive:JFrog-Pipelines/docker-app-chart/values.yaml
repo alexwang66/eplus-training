@@ -6,9 +6,9 @@ replicaCount: 1
 restartPolicy: Never
 
 image:
-  repository: demo.jfrogchina.com:80/docker-local/docker-app
+  repository: demo.jfrogchina.com/docker-local/docker-app
   tag: latest
-  secretName: regsecret
+  secretName: regcred
   pullPolicy: Always
 
 #Uncomment if you want to generate docker credentials using helm
