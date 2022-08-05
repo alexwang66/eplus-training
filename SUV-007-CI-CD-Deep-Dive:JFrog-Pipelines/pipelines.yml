@@ -2,8 +2,8 @@ resources:
   - name: myGitRepo
     type: GitRepo
     configuration:
-      gitProvider: Github_SolEng
-      path: jfrogtraining/swampup2020
+      gitProvider: alex_github
+      path: SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines
       branches:
         include: master
   - name: DockerAppImage
@@ -11,7 +11,7 @@ resources:
     configuration:
       registry: artifactory
       sourceRepository: docker
-      imageName: demo.jfrogchina.com/docker-local/docker-app #docker.artifactory-unified.soleng-us.jfrog.team/swampup_docker_app_demo
+      imageName: demo.jfrogchina.com/docker-local/docker-app 
       imageTag: '${run_number}'
       autoPull: true
   - name: myBuildInfo
