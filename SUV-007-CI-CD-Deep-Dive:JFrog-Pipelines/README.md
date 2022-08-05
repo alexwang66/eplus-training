@@ -1,4 +1,4 @@
-# SwampUp 2020 Pipelines
+# SwampUp 2022 Pipelines
 
 kubectl create secret docker-registry regcred \
   --docker-server=demo.jfrogchina.com \
