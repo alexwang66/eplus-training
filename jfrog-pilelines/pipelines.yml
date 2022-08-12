@@ -3,7 +3,7 @@ resources:
     type: GitRepo
     configuration:
       gitProvider: alex_github
-      path: alexwang66/eplus-training/jfrog-pilelines
+      path: alexwang66/eplus-training
       branches:
         include: master
   - name: DockerAppImage
