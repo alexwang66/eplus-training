@@ -84,7 +84,7 @@ pipelines:
       - name: bld_backend
         type: MvnBuild
         configuration:
-          sourceLocation: SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/java-backend-service
+          sourceLocation: alexwang66/eplus-training/jfrog-pilelines/java-backend-service
           mvnCommand: clean install -ntp
           configFileLocation: .
           configFileName: mvn-art-config
@@ -105,8 +105,8 @@ pipelines:
             - javac -version
             - mvn --version
             - add_pipeline_variables previous_backend_ver=${my_env_var}
-            - sed -ie 's/Default-Server/artifactory/g' $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/java-backend-service/mvn-art-config
-            - sed -ie "s/1.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/java-backend-service/pom.xml
+            - sed -ie 's/Default-Server/artifactory/g' $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/java-backend-service/mvn-art-config
+            - sed -ie "s/1.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/java-backend-service/pom.xml
           onComplete:
             - echo $run_var
             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
@@ -114,7 +114,7 @@ pipelines:
         type: NpmBuild
         configuration:
           npmArgs: --no-progress --no-audit
-          sourceLocation: SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/npm-frontend-service
+          sourceLocation: alexwang66/eplus-training/jfrog-pilelines/npm-frontend-service
           repositoryName: npm
           inputResources:
             - name: myGitRepo
@@ -124,7 +124,7 @@ pipelines:
         execution:
           onStart:
             - add_pipeline_variables previous_frontend_ver=${my_env_var}
-            - sed -i "s/3.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/npm-frontend-service/package.json     
+            - sed -i "s/3.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/npm-frontend-service/package.json     
       - name: publish_frontend
         type: NpmPublish
         configuration:
@@ -137,7 +137,7 @@ pipelines:
         type: DockerBuild
         configuration:
           affinityGroup: fmkGroup
-          dockerFileLocation: SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/
+          dockerFileLocation: alexwang66/eplus-training/jfrog-pilelines/
           dockerFileName: Dockerfile
           dockerImageName: ${ArtIP}/docker/swampup_docker_app_demo
           dockerImageTag: '${run_number}'
@@ -156,11 +156,11 @@ pipelines:
             - add_run_variables url=${ArtIP}/docker
             - add_run_variables old=docker.artifactory
             - echo $url
-            - sed -i "s|$old|$url|g" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/Dockerfile
-            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/${ArtIP}/" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/Dockerfile
-            - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/Dockerfile
-            - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/Dockerfile
-            - cat $res_myGitRepo_resourcePath/SUV-007-CI-CD-Deep-Dive:JFrog-Pipelines/Dockerfile
+            - sed -i "s|$old|$url|g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/${ArtIP}/" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+            - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+            - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+            - cat $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
           onComplete:
             - echo $step_env_var2
             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
