@@ -103,10 +103,7 @@ pipelines:
         execution:
           onStart:
             - javac -version
-            - mvn --version
-            - add_pipeline_variables previous_backend_ver=${my_env_var}
-            - sed -ie 's/Default-Server/artifactory/g' $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/java-backend-service/mvn-art-config
-            - sed -ie "s/1.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/java-backend-service/pom.xml
+            - mvn package
           onComplete:
             - echo $run_var
             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
@@ -123,8 +120,8 @@ pipelines:
             - name: artifactory
         execution:
           onStart:
-            - add_pipeline_variables previous_frontend_ver=${my_env_var}
-            - sed -i "s/3.0.0/$my_env_var/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/npm-frontend-service/package.json     
+            - npm install
+            - npm run build     
       - name: publish_frontend
         type: NpmPublish
         configuration:
@@ -139,7 +136,7 @@ pipelines:
           affinityGroup: fmkGroup
           dockerFileLocation: alexwang66/eplus-training/jfrog-pilelines/
           dockerFileName: Dockerfile
-          dockerImageName: ${ArtIP}/docker/swampup_docker_app_demo
+          dockerImageName: demo.jfrogchina.com/docker/swampup_docker_app_demo
           dockerImageTag: '${run_number}'
           integrations:
             - name: artifactory
@@ -153,11 +150,11 @@ pipelines:
             - name: publish_frontend #bld_frontend
         execution:
           onStart:
-            - add_run_variables url=${ArtIP}/docker
+            - add_run_variables url=demo.jfrogchina.com/docker
             - add_run_variables old=docker.artifactory
             - echo $url
             - sed -i "s|$old|$url|g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/${ArtIP}/" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/demo.jfrogchina.com/" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
             - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
             - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
             - cat $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
