@@ -118,10 +118,10 @@ pipelines:
               trigger: false
           integrations:
             - name: artifactory
-        execution:
-          onStart:
-            - npm install
-            - npm run build     
+#         execution:
+#           onStart:
+#             - npm install
+#             - npm run build     
       - name: publish_frontend
         type: NpmPublish
         configuration:
