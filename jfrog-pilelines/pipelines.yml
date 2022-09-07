@@ -111,7 +111,7 @@ pipelines:
         type: NpmBuild
         configuration:
           npmArgs: --no-progress --no-audit
-          sourceLocation: npm-frontend-service
+          sourceLocation: jfrog-pilelines/npm-frontend-service
           repositoryName: alex-npm
           inputResources:
             - name: myGitRepo
