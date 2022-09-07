@@ -112,7 +112,7 @@ pipelines:
         configuration:
           npmArgs: --no-progress --no-audit
           sourceLocation: alexwang66/eplus-training/jfrog-pilelines/npm-frontend-service
-          repositoryName: npm
+          repositoryName: alex-npm
           inputResources:
             - name: myGitRepo
               trigger: false
@@ -125,7 +125,7 @@ pipelines:
       - name: publish_frontend
         type: NpmPublish
         configuration:
-          repositoryName: npm
+          repositoryName: alex-npm
           inputSteps:
             - name: bld_frontend
           integrations:
