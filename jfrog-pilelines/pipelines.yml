@@ -130,47 +130,47 @@ pipelines:
             - name: bld_frontend
           integrations:
             - name: artifactory
-      - name: bld_docker_app
-        type: DockerBuild
-        configuration:
-          affinityGroup: fmkGroup
-          dockerFileLocation: alexwang66/eplus-training/jfrog-pilelines/
-          dockerFileName: Dockerfile
-          dockerImageName: demo.jfrogchina.com/docker/swampup_docker_app_demo
-          dockerImageTag: '${run_number}'
-          integrations:
-            - name: artifactory
-          inputResources:
-            - name: myGitRepo
-              trigger: false
-          outputResources:
-            - name: DockerAppImage
-          inputSteps:
-            - name: bld_backend
-            - name: publish_frontend #bld_frontend
-        execution:
-          onStart:
-            - add_run_variables url=demo.jfrogchina.com/docker
-            - add_run_variables old=docker.artifactory
-            - echo $url
-            - sed -i "s|$old|$url|g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-            - sed -i "s/artifactory-unified.soleng-us.jfrog.team/demo.jfrogchina.com/" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-            - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-            - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-            - cat $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
-          onComplete:
-            - echo $step_env_var2
-            - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
-      - name: push_docker_app
-        type: DockerPush
-        configuration:
-          affinityGroup: fmkGroup
-          targetRepository: docker
-          forceXrayScan: true
-          autoPublishBuildInfo: true
-          integrations:
-            - name: artifactory
-          inputSteps:
-            - name: bld_docker_app
-          outputResources:
-            - name: myBuildInfo
+#       - name: bld_docker_app
+#         type: DockerBuild
+#         configuration:
+#           affinityGroup: fmkGroup
+#           dockerFileLocation: alexwang66/eplus-training/jfrog-pilelines/
+#           dockerFileName: Dockerfile
+#           dockerImageName: demo.jfrogchina.com/docker/swampup_docker_app_demo
+#           dockerImageTag: '${run_number}'
+#           integrations:
+#             - name: artifactory
+#           inputResources:
+#             - name: myGitRepo
+#               trigger: false
+#           outputResources:
+#             - name: DockerAppImage
+#           inputSteps:
+#             - name: bld_backend
+#             - name: publish_frontend #bld_frontend
+#         execution:
+#           onStart:
+#             - add_run_variables url=demo.jfrogchina.com/docker
+#             - add_run_variables old=docker.artifactory
+#             - echo $url
+#             - sed -i "s|$old|$url|g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+#             - sed -i "s/artifactory-unified.soleng-us.jfrog.team/demo.jfrogchina.com/" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+#             - sed -i "s/frontend-3.0.0/frontend-$previous_frontend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+#             - sed -i "s/1.0.0/$previous_backend_ver/g" $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+#             - cat $res_myGitRepo_resourcePath/alexwang66/eplus-training/jfrog-pilelines/Dockerfile
+#           onComplete:
+#             - echo $step_env_var2
+#             - echo "Running $pipeline_name | $step_name on node ID $step_node_id"
+#       - name: push_docker_app
+#         type: DockerPush
+#         configuration:
+#           affinityGroup: fmkGroup
+#           targetRepository: docker
+#           forceXrayScan: true
+#           autoPublishBuildInfo: true
+#           integrations:
+#             - name: artifactory
+#           inputSteps:
+#             - name: bld_docker_app
+#           outputResources:
+#             - name: myBuildInfo
