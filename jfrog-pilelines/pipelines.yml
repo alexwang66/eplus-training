@@ -5,7 +5,7 @@ resources:
       gitProvider: alex_github
       path: alexwang66/eplus-training
       branches:
-        include: master
+        include: main
   - name: DockerAppImage
     type: Image
     configuration:
