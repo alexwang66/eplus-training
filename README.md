@@ -1,12 +1,6 @@
 # SwampUp 2022 Pipelines
-Prepare
-SCM
-git@github.com:alexwang66/eplus-training.git
 
-
-Artifactory Developer
-git clone git@github.com:alexwang66/eplus-training.git
-
+# Artifactory Developer:
 
 
 Rest API
@@ -113,13 +107,13 @@ Vi findByBuildName.aql
 }]}
 
 jf rt dl --spec=findByBuildName.aql --dry-run
-Artifactory Admin
+# Artifactory Admin
 Replication
 Federated repo
 Access Federation
 Access token
 User plugin
 	
-Xray
+# Xray
 
-Pipeline
+# Pipeline
