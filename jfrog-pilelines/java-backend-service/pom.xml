@@ -14,7 +14,7 @@
 	<artifactId>backend</artifactId>
 	<packaging>jar</packaging>
 	<groupId>com.jfrog</groupId>
-	<version>1.0.0</version>
+	<version>1.0.1</version>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

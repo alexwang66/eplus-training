@@ -1,6 +1,6 @@
 {
-  "name": "frontend",
-  "version": "3.0.0",
+  "name": "frontendtest",
+  "version": "3.0.1",
   "description": "A Vue.js & Spring Boot example project",
   "author": "Elad Hirsch <eladh@jfrog.com>",
   "private": false,
@@ -12,10 +12,8 @@
     "test": "vue-cli-service test:unit && vue-cli-service test:e2e",
     "build": "vue-cli-service build"
   },
-  "publishConfig": {
-    "registry": "http://demo.jfrogchina.com/artifactory/api/npm/alex-npm/"
-  },
-  "dependencies": {
+"publishConfig":{"registry":"https://demo.jfrogchina.com/artifactory/api/npm/eplus-npm/"}, 
+ "dependencies": {
     "axios": "^0.18.0",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0-rc.20",
