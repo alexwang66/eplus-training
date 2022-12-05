@@ -6,10 +6,10 @@
 Rest API
 
 查看文件
-curl -i -uadmin:${jfrogchina_apikey} https://demo.jfrogchina.com:443/artifactory/app1-maven-release-local/org/jfrog/test/multi3/4.7/multi3-4.7.war
+curl -i -uadmin:${jfrogchina_apikey} https://server:443/artifactory/app1-maven-release-local/org/jfrog/test/multi3/4.7/multi3-4.7.war
 
 更新制品属性
-curl -H "X-JFrog-Art-Api:${jfrogchina_apikey}" -X PUT "https://demo.jfrogchina.com:443/artifactory/api/storage/app1-maven-release-local/org/jfrog/test/multi3/4.7/multi3-4.7.war?properties=os=win,linux;qa=done&recursive=1"
+curl -H "X-JFrog-Art-Api:${jfrogchina_apikey}" -X PUT "https://server:443/artifactory/api/storage/app1-maven-release-local/org/jfrog/test/multi3/4.7/multi3-4.7.war?properties=os=win,linux;qa=done&recursive=1"
 
 Build Tools
 CLI Mvn
@@ -46,10 +46,10 @@ docker run -d -p 8088:8088 --name docker-app consolidate-app
 
 
 docker login demo.jfrogchina.com
-➜  /etc docker tag docker-app demo.jfrogchina.com/docker-local/docker-app
-➜  /etc docker push demo.jfrogchina.com/docker-local/docker-app
+➜  /etc docker tag docker-app server/docker-local/docker-app
+➜  /etc docker push server/docker-local/docker-app
 
-jf docker push demo.jfrogchina.com/docker-local/docker-app --build-name=docker-app --build-number=1
+jf docker push server/docker-local/docker-app --build-name=docker-app --build-number=1
 jf rt bp docker-app 1
 
 Maven plugin:
@@ -73,7 +73,7 @@ Maven plugin:
                             <review.team>qa</review.team>
                         </deployProperties>
                         <publisher>
-                            <contextUrl>https://demo.jfrogchina.com</contextUrl>
+                            <contextUrl>https://server</contextUrl>
                             <username>admin</username>
                             <password>{DESede}...</password>
                             <repoKey>eplus-libs-release</repoKey>
@@ -93,7 +93,7 @@ NAME                          TYPE           CLUSTER-IP       EXTERNAL-IP      P
 docker-app-docker-app-chart   LoadBalancer   192.168.34.120   39.106.131.127   8088:31420/TCP   52s
 kubernetes                    ClusterIP      192.168.0.1      <none>           443/TCP          37d
 
-Visit: http://39.106.131.127:8088/index.html#/bootstrap
+Visit: http://server:8088/index.html#/bootstrap
 
 AQL
 Vi findByBuildName.aql 
