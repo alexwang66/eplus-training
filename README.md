@@ -45,7 +45,7 @@ docker run -d -p 8088:8088 --name docker-app consolidate-app
 
 
 
-docker login demo.jfrogchina.com
+docker login server
 ➜  /etc docker tag docker-app server/docker-local/docker-app
 ➜  /etc docker push server/docker-local/docker-app
 
