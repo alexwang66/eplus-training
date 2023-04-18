@@ -13,6 +13,7 @@
 **/.eclipse
 **/target/
 **/.jfrog
+**/.mvn/
 target/
 bin/
 .svn
