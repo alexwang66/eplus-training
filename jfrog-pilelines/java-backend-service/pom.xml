@@ -118,5 +118,16 @@
 		</pluginRepository>
 	</pluginRepositories>
 
-
+	<distributionManagement>
+		<repository>
+			<id>central</id>
+			<name>jfrogchina.com-releases</name>
+			<url>https://demo.jfrogchina.com:443/artifactory/alex-maven-local</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>jfrogchina.com-snapshots</name>
+			<url>https://demo.jfrogchina.com:443/artifactory/alex-maven-local</url>
+		</snapshotRepository>
+	</distributionManagement>
 </project>
