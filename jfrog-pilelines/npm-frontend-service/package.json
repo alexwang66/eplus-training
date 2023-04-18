@@ -13,7 +13,7 @@
     "build": "vue-cli-service build"
   },
   "publishConfig": {
-    "registry": "https://demo.jfrogchina.com/artifactory/api/npm/alex-npm-local/"
+    "registry": "https://demo.jfrogchina.com/artifactory/api/npm/eplus-npm-local/"
   },
   "dependencies": {
     "axios": "^0.18.0",
