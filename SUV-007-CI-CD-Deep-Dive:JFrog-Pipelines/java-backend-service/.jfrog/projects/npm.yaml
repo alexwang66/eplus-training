@@ -1,8 +1,0 @@
-version: 1
-type: npm
-resolver:
-  repo: alex-npm
-  serverId: jfrogchina
-deployer:
-  repo: alex-npm-local
-  serverId: jfrogchina

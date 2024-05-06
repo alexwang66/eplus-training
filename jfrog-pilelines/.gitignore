@@ -1,6 +1,4 @@
-
 .idea/workspace.xml
-.fleet/
 .idea/dictionaries/myj.xml
 .idea/
 .DS_Store
@@ -15,6 +13,7 @@
 **/.eclipse
 **/target/
 **/.jfrog
+**/.mvn/
 target/
 bin/
 .svn
